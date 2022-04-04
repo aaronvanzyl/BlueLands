@@ -68,18 +68,17 @@ public static class Noise
         return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
     }
 
-    public static void SetSeed(int seed)
+    static void SetSeed(int seed)
     {
-        offset.x = seed * 54684;
-        offset.x %= hashMask;
-        offset.y = seed * 31781;
-        offset.y %= hashMask;
+        Random.InitState(seed);
+        offset.x = Random.Range(0, 255);
+        offset.y = Random.Range(0, 255);
     }
 
-    public static float Value2D(Vector2 point, float frequency)
+    static float Value2D(Vector2 point, float frequency)
     {
-        point += offset;
         point *= frequency;
+        point += offset;
         int ix0 = Mathf.FloorToInt(point.x);
         int iy0 = Mathf.FloorToInt(point.y);
         float tx = Smooth(point.x - ix0);
@@ -101,8 +100,12 @@ public static class Noise
         return hxy / hashMask;
     }
 
-    public static float Layered2D(Vector2 point, Vector2 frequency, int layers, float lacunarity, float persistence)
+    public static float Layered2D(Vector2 point, Vector2 frequency, int layers, float lacunarity, float persistence, int seed=-1)
     {
+        if (seed == -1) {
+            seed = Random.Range(int.MinValue, int.MaxValue);
+        }
+        SetSeed(seed);
         float range = 1f;
         float amplitude = 1f;
         float sum = Perlin2D(point, frequency);
@@ -116,7 +119,7 @@ public static class Noise
         return sum / range;
     }
 
-    public static float Perlin2D(Vector2 point, Vector2 frequency)
+    static float Perlin2D(Vector2 point, Vector2 frequency)
     {
         point *= frequency;
         point += offset;

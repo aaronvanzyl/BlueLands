@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    public StructureGenerator structureGenerator;
+    public BiomeDefs biomeDefs;
     public TileGrid grid;
+    public NoiseGen positionOffset;
     public NoiseGen elevationAdd;
     public NoiseGen elevationMult;
     public NoiseGen humidityNoise;
     public NoiseGen temperatureNoise;
     public float waterLevel;
+    public float deepWaterLevel;
     public float maxStepsFromWater = 4;
     public int minRiverCount;   
     public int maxRiverCount;
@@ -17,17 +21,7 @@ public class MapGenerator : MonoBehaviour
     public AnimationCurve waterHumidityCurve;
     public float temperatureHumidityScaling;
     public float elevationTemperatureScaling;
-    Biome[] biomeChart = {
-        Biome.Tundra, Biome.Steppes, Biome.Desert, Biome.Desert,
-        Biome.BorealForest, Biome.BorealForest, Biome.TemperateForest, Biome.Savanna,
-        Biome.BorealForest, Biome.TemperateForest, Biome.TemperateForest, Biome.Savanna,
-        Biome.Swamp, Biome.RainForest, Biome.RainForest, Biome.RainForest
-    };
-    float[] humidityRanges = {0.25f,0.5f,0.75f};
-    float[] temperatureRanges = {0.25f, 0.5f, 0.75f};
     public float globalFrequency = 1;
-
-    //public int riverSearchRange;
     public int seed;
 
     public void Generate2()
@@ -45,30 +39,82 @@ public class MapGenerator : MonoBehaviour
     {
         for (int i = 0; i < grid.tileCountX; i++) {
             for (int j = 0; j < grid.tileCountY; j++) {
-                grid.tiles[i,j] = new Tile();
+                grid.tiles[i,j] = new Tile(new Vector2Int(i,j));
             }
+        }
+        for (int i = 0; i < grid.wallCount; i++) {
+            grid.tileWalls[i] = new TileWall();
         }
     }
 
     public void Generate()
     {
         ResetMap();
-        /*for (int i = 0; i < grid.tileCountX; i++)
-        {
-            for (int j = 0; j < grid.tileCountY; j++)
-            {
-                grid.tiles[i, j].elevation = Random.Range(0f, 1f);
-            }
-        }*/
-        Noise.SetSeed(seed);
         Random.InitState(seed);
+
+        SetSeeds();
+        CalculateElevation();
+        CalculateTemperature();
+        GenerateRivers();
+        CalculateOcean();
+        CalculateHumidity();
+        foreach (Tile t in grid.tiles) {
+            t.biome = biomeDefs.DetermineBiome(t);
+        }
+        CalculateTrees();
+        structureGenerator.CalculateCityAppeal();
+        structureGenerator.GenerateStructures();
+    }
+
+    void SetSeeds() {
         for (int i = 0; i < grid.tileCountX; i++)
         {
             for (int j = 0; j < grid.tileCountY; j++)
             {
-                //ELEVATION
-                Vector3 v = HexMetric.WorldCoords(i, j);
-                Vector2 scaled = new Vector2(v.x / grid.tileCountX, v.z / grid.tileCountY) * globalFrequency;
+                grid.tiles[i, j].seed = Random.Range(int.MinValue, int.MaxValue);
+            }
+        }
+        elevationAdd.seed = Random.Range(int.MinValue, int.MaxValue);
+        elevationMult.seed = Random.Range(int.MinValue, int.MaxValue);
+        humidityNoise.seed = Random.Range(int.MinValue, int.MaxValue);
+        temperatureNoise.seed = Random.Range(int.MinValue, int.MaxValue);
+        positionOffset.seed = Random.Range(int.MinValue, int.MaxValue);
+    }
+
+    void CalculateTrees() {
+        foreach (Tile t in grid.tiles)
+        {
+            int nTrees = Mathf.RoundToInt(t.biome.treeRate + NextGaussian() * t.biome.treeRate * 0.5f);
+            t.trees = t.waterType == WaterType.None ? nTrees : 0;
+        }
+    }
+
+    void GenerateRivers() {
+        int numRivers = Random.Range(minRiverCount, maxRiverCount);
+        for (int i = 0, j = 0; i < numRivers && j < 200; i++, j++)
+        {
+            int x = Random.Range(0, grid.tileCountX);
+            int y = Random.Range(0, grid.tileCountY);
+            Vector2Int peak = Elevate(x, y, 4);
+            if (grid.tiles[peak.x, peak.y].elevation < waterLevel + 0.2f || grid.tiles[peak.x, peak.y].waterType != WaterType.None)
+            {
+                i--;
+                continue;
+            }
+            //Debug.Log(grid.tiles[peak.x, peak.y].elevation);
+            //grid.tiles[peak.x, peak.y].elevation += 0.3f;
+            //Debug.Log(peak);
+            GenerateRiver(peak);
+        }
+    }
+
+    void CalculateElevation() {
+        for (int i = 0; i < grid.tileCountX; i++)
+        {
+            for (int j = 0; j < grid.tileCountY; j++)
+            {
+                Vector2 scaled = Scale(i, j);
+                scaled += positionOffset.Evaluate2D(scaled);
                 float add = elevationAdd.Evaluate(scaled);
                 float mult = elevationMult.Evaluate(scaled);
                 if (add > waterLevel)
@@ -77,67 +123,36 @@ public class MapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    //grid.tiles[i, j].elevation = (waterLevel) + (add - (waterLevel)) * Mathf.Max(1f,mult);// (waterLevel) + (add - (waterLevel)) * mult;
                     grid.tiles[i, j].elevation = add;
-                    //grid.tiles[i, j].elevation = (waterLevel) + (add - (waterLevel)) * mult + 0.1f;
                 }
-                grid.tiles[i, j].temperature = 1f - Mathf.Abs((float)j - grid.tileCountY / 2f) * 2f / grid.tileCountY;
-                grid.tiles[i, j].temperature += temperatureNoise.Evaluate(scaled);
-                grid.tiles[i, j].temperature -= (grid.tiles[i, j].elevation-0.5f) * elevationTemperatureScaling;
-                //grid.tiles[i, j].elevation = mult;
-                //grid.SetTextureData(i,j,colorGradient.Evaluate(grid.tiles[i,j].elevation));
-                //grid.SetTextureData(i, j, Color.HSVToRGB(noise,1,1));
-
-                //HUMIDITY
-                grid.tiles[i, j].humidity = humidityNoise.Evaluate(scaled);
-                //grid.tiles[i, j].humidity = grid.tiles[i, j].elevation > waterLevel ? 0f : 1f;
             }
         }
-        int numRivers = Random.Range(minRiverCount, maxRiverCount);
-        for (int i = 0, j = 0; i < numRivers && j<200; i++, j++)
+    }
+
+    void CalculateTemperature() {
+        for (int i = 0; i < grid.tileCountX; i++)
         {
-            int x = Random.Range(0, grid.tileCountX);
-            int y = Random.Range(0, grid.tileCountY);
-            Vector2Int peak = Elevate(x, y, 4);
-            if (grid.tiles[peak.x, peak.y].elevation < waterLevel + 0.2f || grid.tiles[peak.x, peak.y].waterType != WaterType.None)
+            for (int j = 0; j < grid.tileCountY; j++)
             {
-                i--; 
-                continue;
+                grid.tiles[i, j].temperature = 1f - Mathf.Abs((float)j - grid.tileCountY / 2f) * 2f / grid.tileCountY;
+                grid.tiles[i, j].temperature += temperatureNoise.Evaluate(Scale(i,j));
+                grid.tiles[i, j].temperature -= (grid.tiles[i, j].elevation - 0.5f) * elevationTemperatureScaling;
             }
-            //Debug.Log(grid.tiles[peak.x, peak.y].elevation);
-            //grid.tiles[peak.x, peak.y].elevation += 0.3f;
-            //Debug.Log(peak);
-            GenerateRiver(peak);
         }
-        CalculateWater();
-        CalculateHumidity();
-
-        foreach (Tile t in grid.tiles) {
-            t.biome = DetermineBiome(t);
-        }
-        //GenerateRiver(new Vector2Int(110, 50));
     }
 
-    Biome DetermineBiome(Tile tile) {
-        int tempIndex = 0;
-        while (tempIndex < temperatureRanges.Length && tile.temperature > temperatureRanges[tempIndex]) {
-            tempIndex++;
-        }
+	Vector2 Scale(int i, int j) {
+        Vector3 v = HexMetric.XYToWorldCoords(i, j);
+		Vector2 scaled = new Vector2(v.x / grid.tileCountX, v.z / grid.tileCountY) * globalFrequency;
+        return scaled;
+	}
 
-        int humidityIndex = 0;
-        while (humidityIndex < humidityRanges.Length && tile.humidity > humidityRanges[humidityIndex])
-        {
-            humidityIndex++;
-        }
-
-        return biomeChart[humidityIndex * (temperatureRanges.Length+1) + tempIndex];
-    }
-
-    void CalculateWater() {
+    void CalculateOcean() {
         for (int i = 0; i < grid.tileCountX; i++) {
             for (int j = 0; j < grid.tileCountY; j++) {
                 if (grid.tiles[i, j].elevation <= waterLevel) {
-                    grid.tiles[i, j].waterType = WaterType.Ocean;
+                    grid.tiles[i, j].waterType = grid.tiles[i,j].elevation <= deepWaterLevel ? WaterType.DeepOcean : WaterType.Ocean;
+                    grid.tiles[i, j].elevation = waterLevel;
                 }
             }
         }
@@ -245,7 +260,8 @@ public class MapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    grid.tiles[i, j].humidity += waterHumidityCurve.Evaluate(stepsFromWater[i, j] / maxStepsFromWater);
+					grid.tiles[i, j].humidity = humidityNoise.Evaluate(Scale(i,j));
+					grid.tiles[i, j].humidity += waterHumidityCurve.Evaluate(stepsFromWater[i, j] / maxStepsFromWater);
                     grid.tiles[i, j].humidity = Mathf.Lerp(grid.tiles[i, j].humidity, grid.tiles[i, j].humidity * (grid.tiles[i, j].temperature*2f), temperatureHumidityScaling);
                 }
 
@@ -330,10 +346,10 @@ public class MapGenerator : MonoBehaviour
         //    //x = minE.x;
         //    //y = minE.y;
         //}
-        for (int test = 0; test < 100; test++)
+        for (int steps = 0; steps < 100; steps++)
         {
             grid.tiles[pos.x, pos.y].waterType = WaterType.River;
-            List<Vector2Int> adj = HexSearch(pos, riverSearchDist, true);
+            List<Vector2Int> adj = grid.HexSearch(pos, riverSearchDist, true);
             Vector2Int minE = adj[0];
             foreach (Vector2Int v in adj)
             {
@@ -348,22 +364,26 @@ public class MapGenerator : MonoBehaviour
             }
 
             //grid.tiles[minE.x, minE.y].elevation += 0.1f;
-            int testC2 = 0;
-            while (testC2 < riverSearchDist && pos != minE)
+            int substeps = 0;
+            while (substeps < riverSearchDist && pos != minE)
             {
-                testC2++;
-                pos += HexMetric.Step(pos, HexMetric.DirectionBetween(pos, minE));
-                if (!InBounds(pos) || grid.tiles[pos.x, pos.y].elevation < waterLevel)
+                substeps++;
+                Vector2Int newPos = pos + HexMetric.Step(pos, HexMetric.DirectionBetween(pos, minE));
+                grid.tiles[pos.x, pos.y].connections[(int)HexMetric.DirectionBetween(pos, newPos)] = ConnectionType.River;
+                grid.tiles[pos.x, pos.y].waterType = WaterType.River;
+                if (!InBounds(newPos) || grid.tiles[newPos.x, newPos.y].elevation < waterLevel)
                 {
                     return;
                 }
-                grid.tiles[pos.x, pos.y].waterType = WaterType.River;
-
+                grid.tiles[newPos.x, newPos.y].connections[(int)HexMetric.DirectionBetween(newPos, pos)] = ConnectionType.River;
+                pos = newPos;
+                
             }
             pos = minE;
 
         }
     }
+
     bool InBounds(Vector2Int v)
     {
         return v.x >= 0 && v.y >= 0 && v.x < grid.tileCountX && v.y < grid.tileCountY;
@@ -405,36 +425,18 @@ public class MapGenerator : MonoBehaviour
         return maxPos;
     }
 
-    List<Vector2Int> HexSearch(Vector2Int center, int radius, bool includeCenter)
+    public static float NextGaussian()
     {
-        Vector2Int hexC = HexMetric.XYToHex(center);
-        List<Vector2Int> tiles = new List<Vector2Int>();
-        for (int y = hexC.y; y <= hexC.y + radius; y++)
+        float v1, v2, s;
+        do
         {
-            for (int x = hexC.x - radius; x <= hexC.x + radius - (y - hexC.y); x++)
-            {
-                if (!includeCenter && x == hexC.x && y == hexC.y)
-                {
-                    continue;
-                }
-                Vector2Int coords = HexMetric.HexToXY(new Vector2Int(x, y));
-                if (coords.x >= 0 && coords.y >= 0 && coords.x < grid.tileCountX && coords.y < grid.tileCountY)
-                {
-                    tiles.Add(coords);
-                }
-            }
-        }
-        for (int y = hexC.y - 1; y >= hexC.y - radius; y--)
-        {
-            for (int x = hexC.x - radius + Mathf.Abs(y - hexC.y); x <= hexC.x + radius; x++)
-            {
-                Vector2Int coords = HexMetric.HexToXY(new Vector2Int(x, y));
-                if (coords.x >= 0 && coords.y >= 0 && coords.x < grid.tileCountX && coords.y < grid.tileCountY)
-                {
-                    tiles.Add(coords);
-                }
-            }
-        }
-        return tiles;
+            v1 = 2.0f * Random.Range(0f, 1f) - 1.0f;
+            v2 = 2.0f * Random.Range(0f, 1f) - 1.0f;
+            s = v1 * v1 + v2 * v2;
+        } while (s >= 1.0f || s == 0f);
+
+        s = Mathf.Sqrt((-2.0f * Mathf.Log(s)) / s);
+
+        return v1 * s;
     }
 }

@@ -4,32 +4,59 @@ using UnityEngine;
 
 public class DataVisualizer : MonoBehaviour
 {
-    public enum DataType { mixed, slope, temperature, humidity, biome, mixed2 }
-    public TileGrid grid;
-    public DataType dataType;
+    public enum DataType { mixed, slope, temperature, humidity, biome, mixed2, cityAppeal }
+
+    [Header("References")]
+    public StructureVisualizer structureVisualizer;
     public GridRenderer gridRenderer;
+    public TileGrid grid;
+    public GridMesh mesh;
+
+    [Header("General")]
+    public DataType dataType;
     DataType prevDataType;
+
+    [Header("Elevation")]
+    public bool enable3D;
+    public float heightScale;
     public float slopeMult;
     public AnimationCurve elevationPreGradient;
+
+    [Header("Color gradients")]
+    public float elevationColorOffset;
     public Gradient elevationGradient;
     public Gradient slopeGradient;
     public Gradient temperatureGradient;
     public Gradient humidityGradient;
-    public GridMesh mesh;
     public Gradient waterGradient;
-    public Color oceanColor;
-    public float heightScale;
-    public float elevationColorOffset;
-    public bool enable3D;
+    public Gradient cityAppealGradient;
 
-    public Color[] biomeColors;
+    [Header("Water")]
+    public bool enableRivers;
+    public Color oceanColor;
+    public Color deepOceanColor;
+    public Color riverColor;
+
+    [Header("Walls")]
+    public bool enableWalls;
+    public Color wallColor;
+    public float wallHeight;
+    public float wallThickness;
+
+    [Header("Clutter")]
+    public bool enableClutter;
+    bool prevEnableClutter = false;
 
     void Start()
     {
-        gridRenderer.Initialize(grid.chunkSize, grid.chunkCountX, grid.chunkCountY, 1);
+        if (gridRenderer != null)
+        {
+            gridRenderer.Initialize(grid.chunkSize, grid.chunkCountX, grid.chunkCountY, 1);
+        }
         if (enable3D)
         {
             mesh.Initialize(grid.chunkSize, grid.chunkCountX, grid.chunkCountY);
+            structureVisualizer.Initialize(grid.tileCountX, grid.tileCountY);
         }
     }
 
@@ -40,16 +67,41 @@ public class DataVisualizer : MonoBehaviour
             UpdateTexture();
             prevDataType = dataType;
         }
+        if (prevEnableClutter != enableClutter)
+        {
+            UpdateStructures();
+            prevEnableClutter = enableClutter;
+        }
     }
 
-    public void UpdateTexture()
+    void UpdateStructures()
+    {
+        for (int i = 0; i < grid.tileCountX; i++)
+        {
+            for (int j = 0; j < grid.tileCountY; j++)
+            {
+                structureVisualizer.UpdateTile(grid.tiles[i, j], i, j, GetHeight(i, j) * heightScale, enableClutter);
+            }
+        }
+    }
+
+    public void UpdateAll()
+    {
+        UpdateTexture();
+        UpdateStructures();
+    }
+
+    void UpdateTexture()
     {
         for (int i = 0; i < grid.tileCountX; i++)
         {
             for (int j = 0; j < grid.tileCountY; j++)
             {
                 Color c = GetColor(i, j);
-                gridRenderer.SetTile(i, j, c);
+                if (gridRenderer != null)
+                {
+                    gridRenderer.SetTile(i, j, c);
+                }
                 if (enable3D)
                 {
                     ChannelInfo info = GetChannelInfo(i, j);
@@ -58,12 +110,43 @@ public class DataVisualizer : MonoBehaviour
                 }
             }
         }
+
+        for (int i = 0; i < grid.wallCount; i++)
+        {
+            WallInfo info = GetWallInfo(i);
+            mesh.SetWallInfo(info, i);
+        }
     }
 
-    ChannelInfo GetChannelInfo(int x, int y) {
-        ChannelInfo inf = ChannelInfo.Empty;
-        inf.active[0] = true;
-        inf.color[0] = Color.red;
+    WallInfo GetWallInfo(int index)
+    {
+        WallInfo info = new WallInfo();
+        if (enableWalls)
+        {
+            info.active = grid.tileWalls[index].active;
+            info.color = wallColor;
+            info.thickness = wallThickness;
+            info.height = wallHeight;
+        }
+        else {
+            info.active = false;
+        }
+        return info;
+    }
+
+    ChannelInfo GetChannelInfo(int x, int y)
+    {
+        ChannelInfo inf = new ChannelInfo();
+        if (enableRivers)
+        {
+            float val = elevationPreGradient.Evaluate(grid.tiles[x, y].elevation + elevationColorOffset);
+            for (int i = 0; i < 6; i++)
+            {
+                inf.active[i] = grid.tiles[x, y].connections[i] != ConnectionType.None;
+                //inf.color[i] = riverColor;
+                inf.color[i] = waterGradient.Evaluate(val);
+            }
+        }
         return inf;
     }
 
@@ -73,18 +156,27 @@ public class DataVisualizer : MonoBehaviour
         {
             case DataType.biome:
                 float val = elevationPreGradient.Evaluate(grid.tiles[x, y].elevation + elevationColorOffset);
-                if (grid.tiles[x, y].waterType == WaterType.River)
-                {
-                    return waterGradient.Evaluate(val);
-                }
+                //if (grid.tiles[x, y].waterType == WaterType.River)
+                //{
+                //    return waterGradient.Evaluate(val);
+                //}
                 if (grid.tiles[x, y].waterType == WaterType.Ocean)
                 {
                     return oceanColor;
                 }
-                return biomeColors[(int)grid.tiles[x, y].biome];
+                if (grid.tiles[x, y].waterType == WaterType.DeepOcean)
+                {
+                    return deepOceanColor;
+                }
+                if (grid.tiles[x, y].biome != null)
+                {
+                    return grid.tiles[x, y].biome.color;
+                }
+                return Color.magenta;
+            //return biomeColors[(int)grid.tiles[x, y].biome];
             case DataType.mixed:
                 val = elevationPreGradient.Evaluate(grid.tiles[x, y].elevation + elevationColorOffset);
-                if (grid.tiles[x, y].waterType == WaterType.River)
+                if (enableRivers && grid.tiles[x, y].waterType == WaterType.River)
                 {
                     return waterGradient.Evaluate(val);
                 }
@@ -107,10 +199,11 @@ public class DataVisualizer : MonoBehaviour
             case DataType.humidity:
                 return humidityGradient.Evaluate(grid.tiles[x, y].humidity);
             case DataType.mixed2:
-                return new Color(grid.tiles[x,y].temperature,0,grid.tiles[x,y].humidity);
-
+                return new Color(grid.tiles[x, y].temperature, 0, grid.tiles[x, y].humidity);
+            case DataType.cityAppeal:
+                return cityAppealGradient.Evaluate(grid.tiles[x, y].cityAppeal);
             default:
-                //Debug.LogWarning("couldnt render data type");
+                Debug.LogWarning("couldnt render data type");
                 break;
         }
         return Color.black;
@@ -136,7 +229,6 @@ public class DataVisualizer : MonoBehaviour
             default:
                 return grid.tiles[x, y].elevation;
                 //Debug.LogWarning("couldnt height map data type");
-
         }
     }
 }

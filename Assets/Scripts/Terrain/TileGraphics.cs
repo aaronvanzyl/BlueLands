@@ -21,9 +21,10 @@ public class TileGraphics : MonoBehaviour
 
     public Texture2D GetTexture(Tile tile) {
         //Graphics.
-       //Debug.Log(sprites[(int)tile.Type].rect);
-       
-        return textures[(int)tile.biome];
+        //Debug.Log(sprites[(int)tile.Type].rect);
+
+        //return textures[(int)tile.biome];
+        return textures[0];
     }
 
 
