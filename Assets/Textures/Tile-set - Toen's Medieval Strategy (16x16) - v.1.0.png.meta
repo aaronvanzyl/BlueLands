@@ -1095,7 +1095,7 @@ TextureImporter:
       213: -2854491123750475080
     second: Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_363
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -1115,6 +1115,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1124,8 +1126,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1146,11 +1148,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 1
@@ -1161,7 +1167,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 1
@@ -1172,7 +1179,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 1
@@ -1183,7 +1191,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 1
@@ -1194,6 +1203,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -8851,6 +8861,371 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_314: -910786265939097371
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_95: -5132737706756146051
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_361: -6506265456235486524
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_256: -3939974613559820315
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_266: -8754052560534770980
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_192: -9218673217094456245
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_73: -9021444529235783584
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_234: -5876097992789284076
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_333: -6108111783767074746
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_140: 2090278138076608669
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_285: 3420521222611366991
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_88: -1995167304113057350
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_0: -6869417872210505878
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_197: -4079389374054407679
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_268: 8627177242924725771
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_296: -402707929737357199
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_58: 3329924429420814933
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_157: -246060790350385891
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_159: -2448816999076034193
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_267: -938704560811108019
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_176: -3236582168001148996
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_155: -5339055942727683420
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_198: -4281357092958089057
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_332: -1921696792272033416
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_39: 1231197551073354910
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_16: 3597401171771548930
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_352: -1265154360635915449
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_339: 4525488727661827099
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_222: -3787181814724661075
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_313: -8918877590021648038
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_345: 4401593545530348736
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_11: 6517656634279543167
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_163: 8671704300667764065
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_231: 6829987784101794683
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_297: -7928086685811094435
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_36: -7707608153184751726
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_91: 256812325457282868
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_174: -6346680247076190770
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_330: 3884352388433192439
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_40: 532036359762197906
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_82: 9181319495585094851
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_100: -8160208722697707281
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_193: -761714247281103767
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_191: 5507542845753740334
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_206: 5793214010368191477
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_276: -6976873371371088909
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_9: -507865462116793559
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_350: 8498604209465412535
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_48: -2557764669317217456
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_322: -5715719096305339617
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_230: -648438381461859413
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_168: 2295724046940857097
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_218: 4238722129492017217
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_289: -8274424065239059448
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_83: -4465633152927076975
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_177: -2114980059910812931
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_210: -3893308381063554382
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_272: 4962796422310585006
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_308: -6066434939378744059
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_86: 1900966445634942808
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_327: -3045400281884851638
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_46: -2512267021823373989
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_50: 5448021888357879641
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_72: 4417933513616611431
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_135: -5808969496156748784
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_12: -4901421412635563908
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_18: 7556616812625764051
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_92: -7820266060580529844
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_117: -2833608787364998075
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_342: -1698740664682846576
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_143: 747652769381993933
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_273: 460512262355828639
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_259: 1774841555092765670
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_121: -806747818847928528
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_357: -7907240202575663337
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_164: 5925866610816474260
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_347: 50586576440156067
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_7: -7690790836927041386
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_248: -4632600178240123998
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_275: -4753975503406074885
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_257: 1166903536293507522
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_303: -1059106771070026368
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_138: 1807493820419716088
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_344: 5091596185873885111
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_84: -1920327479844677112
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_128: -1128001284905378321
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_146: 5628659732399790058
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_274: 8046774859568112295
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_172: 6707371021798214179
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_328: -5541695710904282688
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_109: 7711833790797588654
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_190: 8912055920778737998
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_298: -3330562247239876183
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_181: -1191652103913068139
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_49: -3014918222973920888
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_349: 8306409864159051989
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_101: 6172120193232600200
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_154: -4541111081124328476
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_315: 6136728477533338301
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_271: 6696814984069410683
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_317: -4488714803997843758
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_229: 8341093331345424174
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_169: -7421314866612526895
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_278: 7150521730860372498
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_94: -6727411657445258979
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_118: -8579015275946074356
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_158: 5513678224529910459
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_292: -7903962330387330821
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_160: -4152422390172093957
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_300: -1339049227169593570
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_277: 3947219148716842783
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_204: -9126731351643228663
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_228: 3173631879268500199
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_105: -9116345507510357502
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_167: -2287803976776286034
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_130: -1972079148409244403
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_57: -6899342415760753523
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_152: 5080400888477547945
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_331: 2445989221836502589
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_31: -4555282337753641528
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_98: 4043407434588590749
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_232: -1608117217376256481
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_194: 8997665942259016595
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_33: -2105578757761887695
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_156: -8099499696701227655
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_180: -902059268534732863
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_335: 5228060155668533256
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_13: -7483245377842375868
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_287: -4734346766227453490
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_258: -3348457007172375331
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_97: 503440414620769734
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_129: 6676058295706223947
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_343: -5286071108039360586
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_215: -6336851760193990035
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_224: 7101683401376031306
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_104: 1771519747723990435
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_5: 4715811154161467774
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_293: 8327048549289060099
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_112: 2492346950201188774
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_340: -5828982001655062156
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_161: -615493950496688163
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_34: -2654929237797318956
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_246: 8900453817367736435
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_254: 3430692425221097901
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_354: 6726488235640608307
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_195: 3414979460612619003
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_280: -3873374069523129289
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_142: 7841751860378650927
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_171: -1401916448384778543
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_93: -624259690709733623
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_44: 5819469295439136815
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_356: 6288257252331282174
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_127: -235123311419770638
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_75: -2796020523673168042
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_261: -9070365089263282449
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_23: -6307127062817499247
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_205: -5264437787855574253
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_76: -3355916117202937666
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_17: -3242006264112782185
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_55: -1173205844405417430
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_288: -3579418808279654010
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_295: 8747240364117317028
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_185: 5830557200368294082
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_66: -6351597622225692347
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_15: -3309186957422447064
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_59: -6518187791855083686
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_219: -3940002306244333536
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_318: 1416169703984922068
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_304: 726862315629501516
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_284: 772316380472347328
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_148: -4813933043483340914
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_310: -6084238247270528438
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_245: 4797342183861242245
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_32: -8754537667631589643
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_61: 6575867254980796811
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_240: 2513916902204636047
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_165: -1119050548186306158
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_320: -8361147733383744828
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_329: -2057378097358819134
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_90: -4044114076253426695
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_63: 6285658904276825759
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_336: 2154559761908329736
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_290: 4568503712751591527
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_70: -1100483326206612005
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_42: 2815778720251691024
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_136: -7968004707934275305
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_211: -221590906355113521
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_132: -3788179910338296340
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_47: 7137362686624233089
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_62: 2868116299404207081
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_99: -613273526799016881
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_141: 2350050159177872385
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_337: 8979344015893478551
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_4: 4138603417118373318
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_316: 5142367956687582516
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_96: -3766529964326678596
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_360: -474257676958045443
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_237: -2823317065564673502
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_309: -9062278114553028419
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_173: -5681494583862755044
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_85: 532131292771165203
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_312: -4968907738437622339
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_137: 6017360053923382123
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_182: 270086875497721840
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_19: 6680792331385304527
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_305: -3319402169746627244
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_227: -1476452132739122169
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_166: -4374547581383465691
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_3: -6971266520587217513
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_249: -8408478481270761348
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_151: -7003625677139051400
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_122: -3290583576799965833
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_131: 9116453802991151712
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_27: -6450450539585814528
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_183: -8607066586264903712
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_260: -5878452093907446394
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_119: 1043435955515278897
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_134: -52995159864151302
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_53: 7142758149032881103
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_103: 1330043382804250145
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_29: -1770919411176355805
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_225: -3741218160327755664
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_306: -8996040724292960307
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_188: 6136605151648390257
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_24: 7414137124222350215
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_28: 2073444819017968908
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_359: -9201664547320349793
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_8: 5869991333993206186
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_184: 7362573080482068743
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_60: 243264123005377459
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_242: 3168209601947816619
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_213: 2380917216653892441
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_123: -7151630839530819101
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_233: -5962613935952543195
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_30: -5545809605091127160
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_351: 9113067858404118709
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_41: 2097100493020264754
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_153: -1909808307080233959
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_253: -6636958516173425919
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_87: -8365431146195390258
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_189: 5932360439214074685
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_264: 8979509092205548283
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_51: -2876143683148274596
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_216: 1790468768833200613
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_239: 7562920702977752261
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_323: -1295373113227613375
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_65: 3987223450398917585
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_81: 3673091016692386482
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_150: -4864738400660349103
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_282: -8479728629885416183
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_207: 7435214665414569146
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_54: 6736145225727588579
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_64: -2846396449831574872
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_10: 8760455931082862991
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_45: -8180875587015788165
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_247: -783072313025192806
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_2: 4757614463264183566
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_126: 1037163958949316524
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_283: -6979105744609483367
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_102: 5607352829145649974
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_238: 7604431847910440484
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_324: 3154859013271310561
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_125: 5451930541058429491
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_26: 1171101357540128339
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_302: -2183683398945138265
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_223: 4604885573465510879
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_43: -3689699003399684786
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_358: 7699096673918344948
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_139: -2212212986224926557
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_35: -5139491042304069161
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_263: -4086722245279414965
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_113: -5686476317536195842
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_279: -3307564788132168793
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_235: -8939388546274603702
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_319: 329361129322815428
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_201: 8716568147527880688
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_200: 7516716412323958630
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_294: 8181391464246095089
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_241: 957642721097682793
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_307: -2228411215404406147
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_338: -1285746354014316578
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_299: 354153497491544659
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_20: 865717737863506340
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_78: 7449638691236303005
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_80: 5717862228024367442
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_326: 1871763422301546066
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_52: 8392099764036900234
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_14: 4622688756887118373
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_21: -3329508688124939759
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_69: 4684961022883070009
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_269: -3828592704592976657
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_111: -99070510872581141
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_71: -2166861077317054997
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_106: -530177838832324099
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_178: 7172221473641905070
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_217: -3226157029597657172
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_56: -1190627323686710198
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_209: -114544266778592762
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_355: 148405583280885338
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_270: -443331353731985283
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_334: -3257457037959810675
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_202: 1182866520733963855
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_321: -3023139587445472375
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_107: 7318261318350077600
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_74: -8725896767286991472
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_208: 8657940116423979014
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_251: -8973952036620239807
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_281: -7841609614161444004
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_286: 2696969129087970944
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_6: -4403072641989846797
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_124: 3747054122036066797
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_114: 6068651243255735853
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_341: -5639522906926261680
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_203: -1845572011288558828
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_145: -5177503682381743086
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_196: -1164891653397974440
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_250: 5876477142761655590
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_221: 4986875397038170144
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_265: -8208687368138603069
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_186: 6233723545578860150
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_348: 7509416883828613159
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_144: -2818827306116319887
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_244: 1846549397100338817
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_1: -3031997126468335289
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_25: 8526461045499827403
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_175: 2914212355712106838
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_362: 1603669308870512675
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_77: -4719624540415233073
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_346: -1008536548139086555
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_214: 3286489160909134229
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_120: -7194618045772215399
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_243: 5965597416576443799
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_38: -4489010489692003004
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_67: -5476482813963790199
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_199: -2533988455203678078
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_353: -8393229248006773158
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_79: 8141240551942577614
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_187: -6376274899379338383
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_252: -1910123266575304514
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_115: -2704334631094935366
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_149: -4948655713331014280
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_226: 7570767347279838639
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_301: 8190089041274831809
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_220: 3040020634771810534
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_212: 798465906472083797
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_116: 3845893243396115432
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_311: 3954352672335688702
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_255: -1935045746543373329
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_262: 3305315155647049268
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_110: -8423698636218027218
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_89: 980683089315274992
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_325: 1463645681024380889
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_162: -4138957862107522477
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_363: -2854491123750475080
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_170: -3876838255005181620
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_291: -3807028731574552102
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_133: -673707885566902695
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_37: -5903121973903043755
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_147: 6457136751690437337
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_68: -6925705949720829473
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_22: -6266711874993684329
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_108: -4905576238058666720
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_179: -81907302964447619
+      Tile-set - Toen's Medieval Strategy (16x16) - v.1.0_236: -1435907844168972041
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
